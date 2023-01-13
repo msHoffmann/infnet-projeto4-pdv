@@ -1,0 +1,34 @@
+{
+  "name": "pdv-admin",
+  "version": "1.0.0",
+  "description": "Aplicativo PDV Admin, Projeto Final, Bootcamp, 2023",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Frania Hoffmann",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@adminjs/express": "^5.0.1",
+    "@adminjs/sequelize": "^3.0.0",
+    "@tiptap/prosemirror-tables": "^1.1.4",
+    "adminjs": "^6.7.5",
+    "bcrypt": "^5.1.0",
+    "dotenv": "^16.0.3",
+    "exphbs": "^1.2.0",
+    "express": "^4.18.2",
+    "express-mysql-session": "^2.1.8",
+    "express-session": "^1.17.3",
+    "hbs": "^4.2.0",
+    "moment": "^2.29.4",
+    "mysql2": "^2.3.3",
+    "nodemailer": "^6.8.0",
+    "nodemailer-express-handlebars": "^6.0.0",
+    "sequelize": "^6.28.0",
+    "tslib": "^2.4.1"
+  },
+  "packageManager": "yarn@4.0.0-rc.35",
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
