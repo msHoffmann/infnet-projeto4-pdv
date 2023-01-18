@@ -2,10 +2,10 @@ const AdminJS = require("adminjs");
 const AdminJSExpress = require("@adminjs/express");
 const AdminJSSequelize = require("@adminjs/sequelize");
 const express = require("express");
-const db = require("./db");
-const { generateAdminOptions } = require("./utils/adminOptions");
-
+const db = require("./db.js");
+const { generateAdminOptions } = require("./utils/adminOptions.js");
 const PORT = 3000;
+require("dotenv").config();
 
 AdminJS.registerAdapter({
   Resource: AdminJSSequelize.Resource,
@@ -15,11 +15,12 @@ AdminJS.registerAdapter({
 const start = async () => {
   const app = express();
 
-  const adminOptions = generateAdminOptions;
+  const adminOptions = generateAdminOptions();
 
-  const admin = new AdminJS({});
+  const admin = new AdminJS(adminOptions);
 
   const adminRouter = AdminJSExpress.buildRouter(admin);
+  app.use(express.json());
   app.use(admin.options.rootPath, adminRouter);
 
   db.sync(() => console.log("BD funcionando!"));
