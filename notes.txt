@@ -1,4 +1,4 @@
-CONFIGURAR
+CONFIGURAÇÃO DE AMBIENTE
 
 yarn add adminjs
 yarn set version canary
