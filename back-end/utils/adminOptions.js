@@ -1,11 +1,17 @@
-const { Store } = require("../models/Store");
-const { Role } = require("../models/Role");
-const { User } = require("../models/User");
-const { Client, ClientStore } = require("../models/Client");
-const { Category } = require("../models/Category");
-const { Product } = require("../models/Product");
-const { Sales, SalesItem } = require("../models/Sale");
+const { Store } = require("../models/Store.js");
+const { Role } = require("../models/Role.js");
+const { User } = require("../models/User.js");
+const { Client, ClientStore } = require("../models/Client.js");
+const { Category } = require("../models/Category.js");
+const { Product } = require("../models/Product.js");
+const { Sales, SalesItem } = require("../models/Sale.js");
 const bcrypt = require("bcryptjs");
+
+const Email = require("../utils/Email");
+
+require("dotenv").config();
+
+const { URL_FRONT } = process.env;
 
 const generateResource = (model, properties, actions) => {
   return {
@@ -19,12 +25,12 @@ const generateResource = (model, properties, actions) => {
   };
 };
 
-const clearCpfCnpj = (cpfCnpj) => {
+const cleanCpfCnpj = (cpfCnpj) => {
   return cpfCnpj.replace(/[^\w\s]/gi, "");
   // regex remove special character
 };
 
-const generateAdminOptions = () => {
+const generateAdminOptions = (root_dir) => {
   return {
     resources: [
       generateResource(
@@ -33,13 +39,7 @@ const generateAdminOptions = () => {
         {
           new: {
             before: (request) => {
-              request.payload.cnpj = clearCpfCnpj(request.payload.cnpj);
-              return request;
-            },
-          },
-          edit: {
-            before: (request) => {
-              // request.payload.cnpj = cleanCnpj(request.payload.cnpj);
+              request.payload.cnpj = cleanCpfCnpj(request.payload.cnpj);
               return request;
             },
           },
@@ -55,7 +55,21 @@ const generateAdminOptions = () => {
         },
         {
           new: {
-            before: (request) => {
+            before: async (request) => {
+              const { role_id, email, password } = request.payload;
+              if (role_id == 4 || role_id == 5) {
+                const emailUtil = new Email(root_dir);
+                await emailUtil.sendEmail(
+                  email,
+                  "Dados de Acesso ao ADMINJS",
+                  "password-email",
+                  {
+                    email,
+                    password,
+                    url: URL_FRONT,
+                  }
+                );
+              }
               request.payload.password = bcrypt.hashSync(
                 request.payload.password,
                 10
@@ -76,6 +90,7 @@ const generateAdminOptions = () => {
                   );
                 }
               }
+              return request;
             },
           },
         }
@@ -86,19 +101,21 @@ const generateAdminOptions = () => {
         {
           new: {
             before: (request) => {
-              request.payload.cpf = clearCpfCnpj(request.payload.cpf);
+              request.payload.cpf = cleanCpfCnpj(request.payload.cpf);
               return request;
             },
           },
         }
       ),
       generateResource(ClientStore),
-      generateResource(Sales),
-      generateResource(SalesItem),
       generateResource(Category),
       generateResource(Product),
+      generateResource(Sales),
+      generateResource(SalesItem),
     ],
   };
 };
 
-module.exports = { generateAdminOptions };
+module.exports = {
+  generateAdminOptions,
+};
