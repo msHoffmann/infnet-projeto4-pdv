@@ -1,1 +1,4 @@
-NOTAS DE FRONT-END
+CONFIGURAÇÃO DE AMBIENTE
+
+yarn add react-router-dom / criação de rotas
+yarn add @mui/material @emotion/react @emotion/styled

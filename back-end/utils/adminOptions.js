@@ -12,7 +12,7 @@ const Email = require("../utils/Email");
 require("dotenv").config();
 
 const { URL_FRONT } = process.env;
-
+console.log(URL_FRONT);
 const generateResource = (model, properties, actions) => {
   return {
     resource: model,

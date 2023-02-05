@@ -6,7 +6,12 @@ const exphbs = require("exphbs");
 const { resolve } = require("path");
 
 const { EMAIL, EMAIL_PASSWORD, EMAIL_PORT, EMAIL_SMTP } = process.env;
-
+console.log("--------------");
+console.log(EMAIL);
+console.log(EMAIL_PASSWORD);
+console.log(EMAIL_PORT);
+console.log(EMAIL_SMTP);
+console.log("--------------");
 class Email {
   transporter;
 
