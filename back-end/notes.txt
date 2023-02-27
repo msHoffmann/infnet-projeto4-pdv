@@ -1,0 +1,28 @@
+CONFIGURAÇÃO DE AMBIENTE BACK-END
+
+yarn add adminjs
+yarn set version canary
+yarn add @adminjs/express
+yarn add @adminjs/sequelize
+yarn add bcrypt
+yarn add express
+yarn add dotenv
+yarn add sequelize
+yarn add express-mysql-session
+yarn add moment
+yarn add mysql2
+yarn add nodemailer
+yarn add nodemailer-express-handlebars
+yarn add exphbs
+yarn add hbs
+yarn add @tiptap/prosemirror-tables
+yarn add tslib
+yarn add tslib
+yarn add -D nodemon
+generate node gitignore
+
+--------------------------------------------------------------------
+
+INICIAR PROJETO
+
+yarn start
