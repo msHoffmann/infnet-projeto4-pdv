@@ -6,9 +6,16 @@ yarn add @mui/material @emotion/react @emotion/styled / MUI = framework / biblio
 yarn add @mui/icons-material/Menu @mui/icons-material/Adb
 yarn add @mui/icons-material
 npm i react-router-dom
+yarn add @mui/material/Grid
+yarn add axios / biblioteca javascript que faz solicitações HTTP - se comunica com backend
 
 --------------------------------------------------------------------
 
 INICIAR PROJETO
 
 yarn start
+
+--------------------------------------------------------------------
+
+BROWSER 
+window.localStorage.clear() / limpar histórico

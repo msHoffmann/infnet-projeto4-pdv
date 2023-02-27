@@ -13,7 +13,7 @@ import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import './app-bar.css';
 import { Avatar, Tooltip, Typography } from '@mui/material';
-// import { logout } from '../../services/auth';
+import { logout } from '../../services/auth';
 
 const pages = [
     {
@@ -118,7 +118,7 @@ const LocalAppBar = () => {
                 <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
               </IconButton>
             </Tooltip>
-            {/* <Menu
+            <Menu
               sx={{ mt: '45px' }}
               id="menu-appbar"
               anchorEl={anchorElUser}
@@ -141,7 +141,7 @@ const LocalAppBar = () => {
               }}>
                 <Typography textAlign="center">Sair</Typography>
               </MenuItem>
-            </Menu> */}
+            </Menu>
           </Box>
         </Toolbar>
       </Container>

@@ -1,13 +1,17 @@
+import { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import './not-found.css';
 import { useLocation } from 'react-router-dom';
-// import { useLocation } from 'react-router-dom';
-// import { useEffect } from 'react';
+
 
 const NotFound = ({ title, text, link, link_name, setCurrentRoute }) => {
     const location = useLocation();
-    setCurrentRoute(location.pathname);
+
+    useEffect(() => {
+        setCurrentRoute(location.pathname);
+    }, [])
+    
     return <div id="notfound">
                 <div class="notfound">
                     <div class="notfound-404">
