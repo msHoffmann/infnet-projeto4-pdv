@@ -15,6 +15,10 @@ const db = require("./db.js");
 // Models
 const { User } = require("./models/User.js");
 
+// Routes
+const login = require("./routes/login.js");
+const user = require("./routes/user.js");
+
 const { DB_NAME, DB_USER, DB_PASSWORD, DB_HOST, DB_PORT, NODE_ENV } =
   process.env;
 
@@ -64,7 +68,6 @@ const start = async () => {
     {
       store: sessionStore,
       resave: true,
-      saveUnitialized: true,
       secret: "psdf@z52^V@aQRvK78&7IoW6bi$cC8n5",
       cookie: {
         httpOnly: NODE_ENV === "development",
@@ -77,6 +80,8 @@ const start = async () => {
   app.use(cors());
   app.use(express.json());
   app.use(admin.options.rootPath, adminRouter);
+  app.use("/login", login);
+  app.use("/user", user);
 
   db.sync(() => console.log("DB is working!"));
   app.listen(PORT, () => {

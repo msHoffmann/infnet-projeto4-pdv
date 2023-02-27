@@ -20,9 +20,10 @@ yarn add tslib
 yarn add tslib
 yarn add -D nodemon
 generate node gitignore
+yarn add cors
 
 --------------------------------------------------------------------
 
 INICIAR PROJETO
 
-yarn start
+yarn dev
