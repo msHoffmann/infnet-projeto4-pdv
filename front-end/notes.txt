@@ -1,4 +1,14 @@
-CONFIGURAÇÃO DE AMBIENTE
+CONFIGURAÇÃO DE AMBIENTE FRONT-END
 
+npx create-react-app . / cria dentro da pasta
 yarn add react-router-dom / criação de rotas
-yarn add @mui/material @emotion/react @emotion/styled
+yarn add @mui/material @emotion/react @emotion/styled / MUI = framework / biblioteca de componentes React que implementa Material Design do Google
+yarn add @mui/icons-material/Menu @mui/icons-material/Adb
+yarn add @mui/icons-material
+npm i react-router-dom
+
+--------------------------------------------------------------------
+
+INICIAR PROJETO
+
+yarn start
